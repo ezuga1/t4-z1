@@ -1,13 +1,11 @@
 package ba.unsa.etf.rpr;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
 public class LaptopDaoJSONFile implements LaptopDao{
@@ -46,11 +44,22 @@ public class LaptopDaoJSONFile implements LaptopDao{
 
     @Override
     public void napuniListu(ArrayList<Laptop> laptopi) {
-
+        this.laptopi=laptopi;
     }
 
     @Override
-    public ArrayList<Laptop> vratiPodatkeIzDatoteke() {
-        return null;
+    public ArrayList<Laptop> vratiPodatkeIzDatoteke() throws FileNotFoundException {
+        ArrayList<Laptop> vrati = null;
+        ObjectMapper map = new JsonMapper();
+        try{
+            vrati = map.readValue(file, new TypeReference<ArrayList<Laptop>>() {
+            });
+            
+        }
+        catch(IOException e){
+            System.out.println(e);
+        }
+        return vrati;
+
     }
 }

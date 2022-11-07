@@ -11,5 +11,5 @@ public interface LaptopDao {
     void dodajLaptopUFile(Laptop laptop) throws IOException;
     Laptop getLaptop(String procesor);
     void napuniListu(ArrayList<Laptop> laptopi);
-    ArrayList<Laptop> vratiPodatkeIzDatoteke();
+    ArrayList<Laptop> vratiPodatkeIzDatoteke() throws FileNotFoundException;
 }
