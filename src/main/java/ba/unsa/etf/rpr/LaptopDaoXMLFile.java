@@ -13,7 +13,12 @@ import java.util.ArrayList;
 
 class LaptopDaoXMLFile implements LaptopDao{
     private File file;
-    private ArrayList<Laptop> laptopi;
+
+    public LaptopDaoXMLFile(File file) {
+        this.file =file;
+    }
+
+    private ArrayList<Laptop> laptopi = new ArrayList<Laptop>();
 
     @Override
     public void dodajLaptopUListu(Laptop laptop) {

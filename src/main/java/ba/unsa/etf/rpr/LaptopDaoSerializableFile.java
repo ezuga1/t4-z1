@@ -1,22 +1,22 @@
 package ba.unsa.etf.rpr;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class LaptopDaoSerializableFile implements LaptopDao{
-    ArrayList<Laptop> laptopi;
+    private ArrayList<Laptop> laptopi = new ArrayList<Laptop>();
     File file;
+
     @Override
     public void dodajLaptopUListu(Laptop laptop) {
         laptopi.add(laptop);
     }
 
-    public LaptopDaoSerializableFile(ArrayList<Laptop> laptopi, File file) {
-        this.laptopi = laptopi;
+    public LaptopDaoSerializableFile( File file) {
+
         this.file = file;
     }
-    public LaptopDaoSerializableFile(File file) throws IOException {
-        this.laptopi= vratiPodatkeIzDatoteke();
-    }
+
 
     @Override
     public void dodajLaptopUFile(Laptop laptop) throws IOException {
